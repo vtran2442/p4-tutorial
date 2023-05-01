@@ -5,7 +5,8 @@
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "weatherbit": "github:sparkfun/pxt-weather-bit#v0.0.19"
+        "weatherbit": "github:sparkfun/pxt-weather-bit#v0.0.19",
+        "EPXDisplay": "github:microsoft/expressivepixelsmakecode#v1.3.5"
     },
     "files": [
         "main.blocks",
