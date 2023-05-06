@@ -5,6 +5,7 @@ basic.clearScreen()
 input.onButtonPressed(Button.A, function () {
     // serial.writeLine("a: " + input.temperature());
     serial.writeLine("a")
+    serial.writeLine(input.temperature().toString());
     // basic.showNumber(input.temperature())
     // basic.clearScreen()
 })
