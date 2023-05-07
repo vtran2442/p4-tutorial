@@ -1,64 +1,49 @@
 serial.setBaudRate(BaudRate.BaudRate115200)
-basic.clearScreen()
 
 /* CHANGE HUMIDITY COLOR */
 input.onButtonPressed(Button.A, function () {
-    // serial.writeLine("a: " + input.temperature());
-    serial.writeLine("a")
-    serial.writeLine(input.temperature().toString());
-    // basic.showNumber(input.temperature())
-    // basic.clearScreen()
+    serial.writeLine("a: " + input.temperature());
+    basic.showNumber(input.temperature())
+    basic.clearScreen()
 })
 
 /* CHANGE BUNNY SIZE */
 input.onButtonPressed(Button.B, function () {
     serial.writeLine("b")
-    // basic.showIcon(IconNames.Rabbit)
-    // basic.pause(100)
-    // basic.clearScreen()
+    // music.startMelody(music.builtInMelody(Melodies.JumpDown), MelodyOptions.Once)
 })
 
-input.onButtonPressed(Button.AB, function () {
+/* ADD MOTION BALLS */
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     serial.writeLine("c")
 })
+
+
+// input.onButtonPressed(Button.AB, function () {
+//     serial.writeLine("c")
+// })
 
 /* RESET */
 input.onGesture(Gesture.Shake, function () {
     serial.writeLine("d")
+    music.startMelody(music.builtInMelody(Melodies.BaDing), MelodyOptions.Once)
     basic.showAnimation(`
     . . . . . . . . . . . . . . . . . . . . . . . . .
     . . # . . . . . # . . . . . . . # . . . . . # . .
     . . # . . . . # . . . # # # . . . # . . . . # . .
     . . # . . . # . . . . . . . . . . . # . . . # . .
     . . . . . . . . . . . . . . . . . . . . . . . . .
-    `, 500)
+    `, 100)
+
     basic.clearScreen();
 })
 
-/**
- * basic.showNumber(weatherbit.temperature())
- * 
- * basic.showNumber(weatherbit.pressure())
- * 
- * basic.showNumber(weatherbit.humidity())
- * 
- * basic.showNumber(weatherbit.altitude())
- * 
- * serial.writeNumber(weatherbit.temperature()/100);
- */
-/**
- * input.onButtonPressed(TouchButtonEvent.Pressed, function () {
- * 
- * serial.writeLine("n")
- * 
- * })
- */
-// serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
-//     if (serial.readLine().includes("m1")) {
-//         console.log("m1 movement")
-//     } else if (serial.readLine().includes("m2")) {
-//         console.log("m2 movement");
-//     }
-// })
-// serial.setBaudRate(BaudRate.BaudRate115200)
-// basic.clearScreen()
+serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
+    console.log(serial.readLine())
+    if (serial.readLine().includes("b")) { // CHANGE RABBIT SIZE
+        music.startMelody(music.builtInMelody(Melodies.JumpDown), MelodyOptions.Once)
+    } else if (serial.readLine().includes("a")) {
+
+        
+    }
+})
