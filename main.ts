@@ -33,6 +33,11 @@ input.onGesture(Gesture.Shake, function () {
     basic.clearScreen();
 })
 
+/* NOTE: Serial drops some data; thus, a lot of Micro:bit functionality occurs
+when the Micro:bit writes instead of receives from p5. The only functionality
+that occurs when Micro:bit receives is when the rabbit resizes - mostly because 
+the music is annoying to hear all the time so hearing it only a couple times when
+the rabbit resizes is alright. */
 serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
     console.log(serial.readLine())
     if (serial.readLine().includes("b")) { // CHANGE RABBIT SIZE
