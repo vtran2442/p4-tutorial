@@ -18,11 +18,6 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     serial.writeLine("c")
 })
 
-
-// input.onButtonPressed(Button.AB, function () {
-//     serial.writeLine("c")
-// })
-
 /* RESET */
 input.onGesture(Gesture.Shake, function () {
     serial.writeLine("d")
@@ -42,8 +37,5 @@ serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
     console.log(serial.readLine())
     if (serial.readLine().includes("b")) { // CHANGE RABBIT SIZE
         music.startMelody(music.builtInMelody(Melodies.JumpDown), MelodyOptions.Once)
-    } else if (serial.readLine().includes("a")) {
-
-        
     }
 })
